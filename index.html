@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS Documentation</title>
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    
+    
+    <body>
+        <nav id="navbar">
+            <header id="nav-title">Python documentation</header>
+            <ul>
+                <li><a class="nav-link" href="#introduction">Introduction</a></li>
+                <li><a class="nav-link" href="#calculator">Calculator</a></li>
+                <li><a class="nav-link" href="#flow_control">Flow Control</a></li>
+                <li><a class="nav-link" href="#data_structures">Data Structures</a></li>
+                <li><a class="nav-link" href="#modules">Modules</a></li>
+            </ul>
+        </nav>
+        <main id="main-doc">
+            
+            <section id="introduction" class="main-section">
+                <header id="first-h">Introduction</header>
+                <p>In the following examples, input and output are distinguished by the presence or absence of prompts (>>> and <a href="https://docs.python.org/3/glossary.html#term-...">…</a>): to repeat the example, you must type everything after the prompt, when the prompt appears; lines that do not begin with a prompt are output from the interpreter. Note that a secondary prompt on a line by itself in an example means you must type a blank line; this is used to end a multi-line command.</p>
+
+                <p>Many of the examples in this manual, even those entered at the interactive prompt, include comments. Comments in Python start with the hash character, #, and extend to the end of the physical line. A comment may appear at the start of a line or following whitespace or code, but not within a string literal. A hash character within a string literal is just a hash character. Since comments are to clarify code and are not interpreted by Python, they may be omitted when typing in examples.</p>
+                <p>Some examples:</p>
+                <code># this is the first comment
+                    spam = 1  # and this is the second comment</code>
+                <code># ... and now a third!
+                    text = "# This is not a comment because it's inside quotes."</code>
+                <li class="item">You can toggle the display of prompts and output by clicking on >>> in the upper-right corner of an example box</li>
+                <li class="item">If you hide the prompts and output for an example, then you can easily copy and paste the input lines into your interpreter</li>
+            </section>
+            <section id="calculator" class="main-section">
+                <header>Calculator</header>
+                <p>The interpreter acts as a simple calculator: you can type an expression at it and it will write the value. Expression syntax is straightforward: the operators +, -, * and / work just like in most other languages (for example, Pascal or C); parentheses (()) can be used for grouping. For example:</p>
+                <code>2 + 2
+
+                    50 - 5*6
+
+                    (50 - 5*6) / 4
+
+                    8 / 5  # division always returns a floating point number</code>
+                
+                <p>The integer numbers (e.g. 2, 4, 20) have type <a href="https://docs.python.org/3/library/functions.html#int">int</a>, the ones with a fractional part (e.g. 5.0, 1.6) have type <a href="https://docs.python.org/3/library/functions.html#float">float</a>. We will see more about numeric types later in the tutorial.</p>
+                <p>Division (/) always returns a float. To do <a href="https://docs.python.org/3/glossary.html#term-floor-division">floor division</a> and get an integer result you can use the // operator; to calculate the remainder you can use %:</p>
+
+                <code>17 / 3  # classic division returns a float
+
+
+                    17 // 3  # floor division discards the fractional part
+                    
+                    17 % 3  # the % operator returns the remainder of the division
+                    
+                    5 * 3 + 2  # floored quotient * divisor + remainder</code>
+                <li class="item">The integer numbers (e.g. 2, 4, 20) have type int, the ones with a fractional part (e.g. 5.0, 1.6) have type float. We will see more about numeric types later in the tutorial.</li>
+                <li class="item">Division (/) always returns a float. To do floor division and get an integer result you can use the // operator; to calculate the remainder you can use %:</li>
+            </section>
+            <section id="flow_control" class="main-section">
+                <header>Flow Control</header>
+                <p>Besides the <a href="https://docs.python.org/3/reference/compound_stmts.html#while">while</a> statement just introduced, Python uses the usual flow control statements known from other languages, with some twists.</p>
+                <p>Perhaps the most well-known statement type is the <a href="https://docs.python.org/3/reference/compound_stmts.html#if">if</a> statement. For example:</p>
+                <code>x = int(input("Please enter an integer: "))
+                    Please enter an integer: 42
+                    
+                    if x < 0:
+                    
+                        x = 0
+                    
+                        print('Negative changed to zero')
+                    
+                    elif x == 0:
+                    
+                        print('Zero')
+                    
+                    elif x == 1:
+                    
+                        print('Single')
+                    
+                    else:
+                    
+                        print('More')
+                        
+                    More
+                    </code>
+                <p>There can be zero or more <a href="https://docs.python.org/3/reference/compound_stmts.html#elif">elif</a> parts, and the <a href="https://docs.python.org/3/reference/compound_stmts.html#else">else</a> part is optional. The keyword ‘elif’ is short for ‘else if’, and is useful to avoid excessive indentation. An if … elif … elif … sequence is a substitute for the switch or case statements found in other languages.</p>
+                <p>If you’re comparing the same value to several constants, or checking for specific types or attributes, you may also find the match statement useful.</p>
+                <p>A <a href="https://docs.python.org/3/reference/compound_stmts.html#match">match statement</a> takes an expression and compares its value to successive patterns given as one or more case blocks. This is superficially similar to a switch statement in C, Java or JavaScript (and many other languages), but it’s more similar to pattern matching in languages like Rust or Haskell. Only the first pattern that matches gets executed and it can also extract components (sequence elements or object attributes) from the value into variables.</p>
+                <code>def http_error(status):
+                    match status:
+                        case 400:
+                            return "Bad request"
+                        case 404:
+                            return "Not found"
+                        case 418:
+                            return "I'm a teapot"
+                        case _:
+                            return "Something's wrong with the internet"</code>
+                <li class="item">Note the last block: the “variable name” _ acts as a wildcard and never fails to match. If no case matches, none of the branches is executed.</li>
+            </section>
+            <section id="data_structures" class="main-section">
+                <header>Data Structures</header>
+                <p>This chapter describes some things you’ve learned about already in more detail, and adds some new things as well.</p>
+                <p>An example that uses most of the list methods:</p>
+                <code>fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+
+                    fruits.count('apple')
+                    2
+                    
+                    fruits.count('tangerine')
+                    0
+                    
+                    fruits.index('banana')
+                    3
+                    
+                    fruits.index('banana', 4)  # Find next banana starting at position 4
+                    6
+                    
+                    fruits.reverse()
+                    
+                    fruits
+                    ['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange']
+                    
+                    fruits.append('grape')
+                    
+                    fruits
+                    ['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange', 'grape']
+                    
+                    fruits.sort()
+                    
+                    fruits
+                    ['apple', 'apple', 'banana', 'banana', 'grape', 'kiwi', 'orange', 'pear']
+                    
+                    fruits.pop()
+                    'pear'</code>
+                    <p>You might have noticed that methods like insert, remove or sort that only modify the list have no return value printed – they return the default None. <a id="ref" href="#foot-note">[1]</a> This is a design principle for all mutable data structures in Python.</p>
+                    <p>The list methods make it very easy to use a list as a stack, where the last element added is the first element retrieved (“last-in, first-out”). To add an item to the top of the stack, use append(). To retrieve an item from the top of the stack, use pop() without an explicit index. For example:</p>
+                <code>stack = [3, 4, 5]
+
+                    stack.append(6)
+                    
+                    stack.append(7)
+                    
+                    stack
+                    [3, 4, 5, 6, 7]
+                    
+                    stack.pop()
+                    7
+                    
+                    stack
+                    [3, 4, 5, 6]
+                    
+                    stack.pop()
+                    6
+                    
+                    stack.pop()
+                    5
+                    
+                    stack
+                    [3, 4]</code>
+                <li class="item">t is also possible to use a list as a queue, where the first element added is the first element retrieved (“first-in, first-out”); however, lists are not efficient for this purpose.</li>
+            </section>
+            <section id="modules" class="main-section">
+                <header>Modules</header>
+                <p>If you quit from the Python interpreter and enter it again, the definitions you have made (functions and variables) are lost. Therefore, if you want to write a somewhat longer program, you are better off using a text editor to prepare the input for the interpreter and running it with that file as input instead. This is known as creating a script. As your program gets longer, you may want to split it into several files for easier maintenance. You may also want to use a handy function that you’ve written in several programs without copying its definition into each program.</p>
+                <p>To support this, Python has a way to put definitions in a file and use them in a script or in an interactive instance of the interpreter. Such a file is called a module; definitions from a module can be imported into other modules or into the main module (the collection of variables that you have access to in a script executed at the top level and in calculator mode).</p>
+                <p>A module is a file containing Python definitions and statements. The file name is the module name with the suffix .py appended. Within a module, the module’s name (as a string) is available as the value of the global variable __name__. For instance, use your favorite text editor to create a file called fibo.py in the current directory with the following contents:</p>
+                <code># Fibonacci numbers module
+
+                    def fib(n):    # write Fibonacci series up to n
+                        a, b = 0, 1
+                        while a < n:
+                            print(a, end=' ')
+                            a, b = b, a+b
+                        print()
+                    
+                    def fib2(n):   # return Fibonacci series up to n
+                        result = []
+                        a, b = 0, 1
+                        while a < n:
+                            result.append(a)
+                            a, b = b, a+b
+                        return result</code>
+                <p>Now enter the Python interpreter and import this module with the following command:</p>
+                <code>import fibo</code>
+                <p>This does not add the names of the functions defined in fibo directly to the current <a href="https://docs.python.org/3/glossary.html#term-namespace">namespace</a>; it only adds the module name fibo there. Using the module name you can access the functions</p>
+                <code>fibo.fib(1000)
+                    0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+                    
+                    fibo.fib2(100)
+                    [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+                    
+                    fibo.__name__
+                    'fibo'</code>
+                <li class="item">(see <a href="https://docs.python.org/3/tutorial/classes.html#tut-scopes">Python Scopes and Namespaces</a> for more details)</li>
+
+            </section>
+            <section id="foot-note" class="footnote">
+                <header>Footnotes</header>
+                <a href="#ref">[1]</a> Other languages may return the mutated object, which allows method chaining, such as d->insert("a")->remove("b")->sort();.
+            </section>
+
+        </main>
+    </body>
+
+</html>
